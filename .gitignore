@@ -1,0 +1,22 @@
+node_modules/
+.next/
+out/
+.env
+.env.local
+*.log
+.DS_Store
+data/*.db
+data/*.db-*
+data/claude-isolated/
+.vercel
+next-env.d.ts
+
+# Local tooling / per-machine state
+.claude/settings.local.json
+.remember/
+
+# Build caches
+*.tsbuildinfo
+
+# Local audit data (private)
+data/*.md

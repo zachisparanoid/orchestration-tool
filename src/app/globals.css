@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html, body {
+    @apply bg-bg-base text-text-primary;
+    font-feature-settings: "cv11", "ss01", "ss03";
+  }
+  * {
+    border-color: theme("colors.border.subtle");
+  }
+  ::selection {
+    background-color: theme("colors.accent.subtle");
+    color: theme("colors.text.primary");
+  }
+  /* Scrollbar styling */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: theme("colors.border.DEFAULT"); border-radius: 6px; border: 2px solid theme("colors.bg.base"); }
+  ::-webkit-scrollbar-thumb:hover { background: theme("colors.border.strong"); }
+}
+
+@layer components {
+  .card {
+    @apply rounded-lg border bg-bg-surface;
+  }
+  .card-elevated {
+    @apply rounded-lg border bg-bg-elevated;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-md px-3 py-1.5 text-sm font-medium transition-colors;
+  }
+  .btn-primary {
+    @apply btn bg-accent text-white hover:bg-accent-hover;
+  }
+  .btn-secondary {
+    @apply btn border bg-bg-elevated text-text-primary hover:bg-bg-subtle;
+  }
+  .btn-ghost {
+    @apply btn text-text-secondary hover:bg-bg-elevated hover:text-text-primary;
+  }
+  .input {
+    @apply w-full rounded-md border bg-bg-elevated px-3 py-1.5 text-sm text-text-primary placeholder:text-text-muted
+           focus:border-accent focus:outline-none focus:ring-1 focus:ring-accent;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-xs font-medium;
+  }
+  .kbd {
+    @apply rounded border bg-bg-elevated px-1.5 py-0.5 text-[10px] font-mono text-text-secondary;
+  }
+}
+
+/* Status dot animation */
+.dot-running {
+  position: relative;
+}
+.dot-running::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 9999px;
+  background: theme("colors.status.running");
+  opacity: 0.4;
+  animation: pulse 1.6s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Markdown-ish output styling for agent results */
+.prose-mini h1, .prose-mini h2, .prose-mini h3 { @apply font-semibold mt-3 mb-1.5 text-text-primary; }
+.prose-mini h1 { @apply text-base; }
+.prose-mini h2 { @apply text-sm; }
+.prose-mini h3 { @apply text-sm; }
+.prose-mini p  { @apply text-sm text-text-secondary my-1.5 leading-relaxed; }
+.prose-mini ul, .prose-mini ol { @apply text-sm text-text-secondary pl-5 my-1.5; list-style: revert; }
+.prose-mini code { @apply rounded bg-bg-subtle px-1 py-0.5 font-mono text-xs text-text-primary; }
+.prose-mini strong { @apply text-text-primary font-semibold; }
+.prose-mini em { @apply italic text-text-muted; }
+.prose-mini hr { @apply my-3 border-border; }
